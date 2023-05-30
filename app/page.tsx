@@ -9,11 +9,9 @@ const HomePage = () => {
         <div className="bg-slate-50 p-3 mx-2 rounded-full"></div>
         <div className="bg-slate-50 p-3 mx-2 rounded-full"></div>
       </header>
-    <section className='pb-2'>
-      <p className= 'text-center text-2xl uppercase font-bold text-gray-700 mt-3'>Empleados</p>
-    </section>
+      <p className= 'text-center text-2xl uppercase font-bold text-gray-700 my-2'>Empleados</p>
     <Formulario />
-    <footer className='flex float-right italic font-serif'>Elaborado por Ricardo Haro.</footer>
+    <footer className='flex float-right italic font-serif'>made with ❤️ by Ricardo Haro.</footer>
     </main>
   )
 }
