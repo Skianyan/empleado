@@ -2,8 +2,8 @@ import React from 'react'
 
 const HomePage = () => {
   return (
-    <main className='bg-[#e8e8e8] rounded-lg mx-3'>
-      <header className='flex flex-row bg-[#67baee] p-4 mt-2 rounded-t-lg'>
+    <main className='bg-[#e8e8e8] rounded-lg mx-4'>
+      <header className='flex flex-row bg-[#67baee] p-4 mt-4 rounded-t-lg'>
         <div className="bg-slate-50 p-3 mx-2 rounded-full"></div>
         <div className="bg-slate-50 p-3 mx-2 rounded-full"></div>
         <div className="bg-slate-50 p-3 mx-2 rounded-full"></div>
