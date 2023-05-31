@@ -1,5 +1,6 @@
 import React from 'react'
-import Formulario from './form'
+import Formulario from './src/form'
+
 
 const HomePage = () => {
   return (

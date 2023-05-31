@@ -1,12 +1,15 @@
 "use client"
 import React, { useState } from 'react'
+import LinkedList from './linkedList'
+
+const list = new LinkedList();
+
 type InputProps = {
     nombre:string,
     placeholder:string,
     setting:any
     tipo:string
 }
-
 
 function FormInput ({nombre,placeholder,setting,tipo}:InputProps) {
     return(
@@ -18,16 +21,28 @@ function FormInput ({nombre,placeholder,setting,tipo}:InputProps) {
           </div>
     )    
 }
+
+
 const Formulario = () => {
         const [nombre,setNombre] = useState('');
-        const [edad,setEdad] = useState('');
+        const [edad,setEdad] = useState(0);
         const [genero,setGenero] = useState('');
         const [correo, setCorreo] = useState('');
         const [mensaje, setMensaje] = useState('');
-      
+
         const formHandler = (e:any) => {
           e.preventDefault();
-          setMensaje(nombre + ' ' + edad + ' ' + genero + ' ' + correo)
+          
+          if (edad >= 1 && mensaje == ""){
+            setMensaje(mensaje + nombre + ' ' + edad + ' ' + genero + ' ' + correo);
+          }
+          else if (edad >= 1){ 
+            setMensaje(mensaje +" -> " + nombre + ' ' + edad + ' ' + genero + ' ' + correo);
+          }
+          else{
+            throw new Error("Edad debe ser un numero positivo");
+          }  
+
         }
       
       
@@ -39,10 +54,13 @@ const Formulario = () => {
         <FormInput nombre={'Genero'} placeholder={'Genero'} setting={setGenero} tipo={'text'}/>
         <FormInput nombre={'Correo'} placeholder={'Correo'} setting={setCorreo} tipo={'email'}/>
           
-        <button type='submit' className=' bg-blue-500 hover:bg-blue-700 text-white float-right font-bold py-2 px-8 mr-4 mt-2 mb-4 
-        rounded-full'>Enviar</button>
+        <button type='submit' className=' bg-blue-500 hover:bg-blue-700 text-white 
+        float-right font-bold py-2 px-8 mr-4 mt-2 mb-4 rounded-full'> Enviar </button>
+        <button type='reset' className=' bg-blue-500 hover:bg-blue-700 text-white 
+        float-right font-bold py-2 px-8 mr-4 mt-2 mb-4 rounded-full'> Clear </button>
     </form>
     <div className='bg-slate-500'>{mensaje}</div>
+    
     </div>
     )
   }
