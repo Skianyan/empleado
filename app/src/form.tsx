@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import LinkedList from './linkedList'
 
-const list = new LinkedList();
+
 
 type InputProps = {
     nombre:string,
@@ -29,19 +29,34 @@ const Formulario = () => {
         const [genero,setGenero] = useState('');
         const [correo, setCorreo] = useState('');
         const [mensaje, setMensaje] = useState('');
+        const list = new LinkedList();
+
+        interface Persona{
+          nombre:string;
+          edad:number;
+          genero:string;
+          correo:string;
+        }
+
+        let persona:Persona;
+
 
         const formHandler = (e:any) => {
           e.preventDefault();
           
           if (edad >= 1 && mensaje == ""){
             setMensaje(mensaje + nombre + ' ' + edad + ' ' + genero + ' ' + correo);
+            list.append(mensaje);
+            list.print();
           }
           else if (edad >= 1){ 
             setMensaje(mensaje +" -> " + nombre + ' ' + edad + ' ' + genero + ' ' + correo);
           }
           else{
             throw new Error("Edad debe ser un numero positivo");
-          }  
+          }
+          
+
 
         }
       
