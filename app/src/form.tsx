@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import LinkedList from './linkedList'
 
-
+const list = new LinkedList();
 
 type InputProps = {
     nombre:string,
@@ -29,25 +29,32 @@ const Formulario = () => {
         const [genero,setGenero] = useState('');
         const [correo, setCorreo] = useState('');
         const [mensaje, setMensaje] = useState('');
-        const list = new LinkedList();
+        
 
-        interface Persona{
-          nombre:string;
-          edad:number;
-          genero:string;
-          correo:string;
-        }
-
-        let persona:Persona;
-
+        const crearEmpleado = (nombre:string,edad:number,genero:string,correo:string) => {
+          return{nombre,edad,genero,correo}
+          }
 
         const formHandler = (e:any) => {
           e.preventDefault();
+
+          // let persona:Persona = {
+          //   nombre:nombre,
+          //   edad:edad,
+          //   genero:genero,
+          //   correo:correo
+          // }
+          // console.log(persona)
           
+          // list.append(crearEmpleado("rico",23,"m","correo@a"));
+          // list.append(crearEmpleado("rico2",24,"f","correo@b"));
+          // list.append(crearEmpleado("rico3",23,"m","correo@c"));
+          // list.append(crearEmpleado("rico4",24,"f","correo@d"));
+          list.append(crearEmpleado(nombre,edad,genero,correo));
+          list.printList();
+
           if (edad >= 1 && mensaje == ""){
             setMensaje(mensaje + nombre + ' ' + edad + ' ' + genero + ' ' + correo);
-            list.append(mensaje);
-            list.print();
           }
           else if (edad >= 1){ 
             setMensaje(mensaje +" -> " + nombre + ' ' + edad + ' ' + genero + ' ' + correo);
@@ -55,11 +62,7 @@ const Formulario = () => {
           else{
             throw new Error("Edad debe ser un numero positivo");
           }
-          
-
-
         }
-      
       
     return(
     <div className='grid grid-cols-2'>
@@ -74,7 +77,9 @@ const Formulario = () => {
         <button type='reset' className=' bg-blue-500 hover:bg-blue-700 text-white 
         float-right font-bold py-2 px-8 mr-4 mt-2 mb-4 rounded-full'> Clear </button>
     </form>
-    <div className='bg-slate-500'>{mensaje}</div>
+    <div className='grid grid-rows-2 content-between bg-slate-500'>
+    <div>{mensaje}</div>
+    </div>
     
     </div>
     )
